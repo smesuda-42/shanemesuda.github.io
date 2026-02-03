@@ -3,89 +3,159 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game Design Portfolio</title>
+  <title>Shane Mesuda – Game Design Portfolio</title>
+
   <style>
     body {
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #1e293b, #020617);
+      background: radial-gradient(circle at top, #1a0f1f, #020617);
       color: #e5e7eb;
     }
+
+    /* ---------- Header ---------- */
     header {
-      background: linear-gradient(135deg, #6366f1, #22d3ee);
-      padding: 4rem 1.5rem;
+      background: linear-gradient(135deg, #7c2d12, #dc2626);
+      padding: 4.5rem 1.5rem;
       text-align: center;
     }
+
     header h1 {
       margin: 0;
       font-size: 3.2rem;
       letter-spacing: -1px;
     }
+
     header p {
       max-width: 720px;
       margin: 1rem auto 0;
       font-size: 1.25rem;
       opacity: 0.95;
     }
+
+    /* ---------- Nav ---------- */
     nav {
-      background: rgba(2,6,23,0.85);
-      padding: 0.75rem;
+      background: rgba(10, 3, 15, 0.9);
+      padding: 0.9rem;
       text-align: center;
       position: sticky;
       top: 0;
       backdrop-filter: blur(10px);
       z-index: 10;
+      border-bottom: 1px solid rgba(220,38,38,0.3);
     }
+
     nav a {
-      color: #67e8f9;
+      color: #fca5a5;
       margin: 0 1rem;
       text-decoration: none;
       font-weight: 600;
+      letter-spacing: 0.5px;
       transition: color 0.2s ease;
     }
+
     nav a:hover {
       color: #ffffff;
     }
+
+    /* ---------- Layout ---------- */
     section {
       padding: 4rem 1.5rem;
       max-width: 1200px;
       margin: auto;
     }
+
     h2 {
-      border-left: 5px solid #22d3ee;
+      border-left: 5px solid #dc2626;
       padding-left: 0.75rem;
       margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      font-size: 1.9rem;
+      letter-spacing: 0.5px;
     }
+
     .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
       margin-top: 2rem;
     }
+
+    /* ---------- Cards ---------- */
     .card {
-      background: linear-gradient(180deg, #020617, #020617cc);
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+
+      background: linear-gradient(180deg, #0b0215, #020617);
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border: 1px solid rgba(124,45,18,0.35);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
+
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+      box-shadow: 0 35px 80px rgba(220,38,38,0.35);
     }
-    .card img, .card video {
+
+    /* Glow overlay */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(220,38,38,0.35), transparent 45%),
+        radial-gradient(circle at 80% 90%, rgba(124,45,18,0.35), transparent 55%);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card img,
+    .card video,
+    .card iframe {
       width: 100%;
       display: block;
+      border: none;
     }
+
     .card-content {
-      padding: 1.25rem 1.25rem 1.5rem;
+      padding: 1.25rem 1.25rem 1.75rem;
     }
+
     .card-content h3 {
       margin-top: 0;
-      margin-bottom: 0.25rem;
-      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
     }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.6rem 1.4rem;
+      background: linear-gradient(135deg, #dc2626, #7c2d12);
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(220,38,38,0.5);
+    }
+
+    /* ---------- Footer ---------- */
     footer {
       background: #020617;
       text-align: center;
@@ -94,131 +164,97 @@
       font-size: 0.9rem;
       color: #9ca3af;
     }
-    .btn {
-      display: inline-block;
-      margin-top: 0.75rem;
-      padding: 0.6rem 1.2rem;
-      background: linear-gradient(135deg, #22d3ee, #6366f1);
-      color: #020617;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.15s ease;
+
+    /* ---------- Fade-in animation ---------- */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 700ms ease, transform 700ms ease;
     }
-    .btn:hover {
-      transform: scale(1.05);
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Shane Mesuda</h1>
-    <p>Game Designer with a strong QA background, focused on systems, progression, and player experience in live mobile games.</p>
-  </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<header>
+  <h1>Shane Mesuda</h1>
+  <p>Game Designer with a strong QA background, focused on systems, progression, and player experience in live mobile games.</p>
+</header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a Game Designer with over a decade of experience in mobile and live service games, blending design thinking with a deep QA background. I specialize in systems design, feature design, and progression tuning, with a strong focus on clarity, player motivation, and long-term engagement.
-    </p>
-    <p>
-      My strength is turning complex mechanics into intuitive player experiences and collaborating closely with engineering, art, and product teams to ship features that perform well in live environments.
-    </p>
-  </section>
+<nav>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <section id="projects">
-    <h2>Selected Projects</h2>
-    <div class="projects">
-      <div class="card">
-      <img src="https://via.placeholder.com/400x225" alt="Legendary: Game of Heroes screenshot">
-      <iframe width="100%" height="225" src="https://www.youtube.com/embed/VIDEO_ID" title="Legendary: Game of Heroes Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class="card-content">
-          <h3>Legendary: Game of Heroes</h3>
-          <p><strong>Role:</strong> Game Designer</p>
-          <p>
-            Led the design of multiple core systems and features including Hero Skills, Mythic Legends, Mythic Legend Relics, and a new series of Cudgels as long-term chase items.
-          </p>
-          <p><strong>Problem:</strong> Declining player sentiment and shrinking active player population.</p>
-          <ul>
-            <li>Designed Hero Skills to deepen combat strategy and build diversity</li>
-            <li>Created Mythic Legends and Relics to provide long-term progression goals</li>
-            <li>Designed a new series of Cudgels as a long-term chase item for veteran players</li>
-            <li>Authored design specs and collaborated with engineering and live ops</li>
-          </ul>
-          <p><strong>Results:</strong> The new Cudgels series improved player retention and satisfaction. Mythic Legend Relics introduced a new chase item for veteran players and revitalized endgame engagement.</p>
-          <a class="btn" href="#">View Case Study</a>
-        </div>
-      </div>
+<section id="about" class="fade-in">
+  <h2>About Me</h2>
+  <p>
+    I’m a Game Designer with over a decade of experience in mobile and live service games, blending design thinking with a deep QA background. I specialize in systems design, feature design, and progression tuning.
+  </p>
+  <p>
+    My strength is turning complex mechanics into intuitive player experiences and collaborating closely with engineering, art, and product teams to ship features that perform well in live environments.
+  </p>
+</section>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/400x225" alt="Legendary: Heroes Unchained screenshot">
-        <div class="card-content">
-          <h3>Legendary: Heroes Unchained</h3>
-          <p><strong>Role:</strong> Game Designer</p>
-          <p>
-            Designed the foundational rewards economy for a new game, establishing how players earned and spent resources across progression and events.
-          </p>
-          <p><strong>Problem:</strong> The game launched without a defined rewards economy, requiring a full system to support progression, engagement, and monetization.
-          </p>
-          <ul>
-            <li>Defined reward types, sources, and sinks</li>
-            <li>Built early tuning models and progression curves</li>
-            <li>Worked cross-functionally with product and engineering to implement systems</li>
-          </ul>
-          <p><strong>Results & Learnings:</strong> While overall game performance was limited, this work established a complete economy framework and provided key learnings around reward pacing, inflation control, and player motivation in early-stage systems.</p>
-          <a class="btn" href="#">View Case Study</a>
-        </div>
-      </div>
+<section id="projects" class="fade-in">
+  <h2>Selected Projects</h2>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/400x225" alt="Project screenshot">
-        <div class="card-content">
-          <h3>Progression & Economy Rework</h3>
-          <p>
-            Redesigned progression pacing and in-game economy to improve early-game onboarding and long-term engagement.
-          </p>
-          <ul>
-            <li>Created tuning models in spreadsheets</li>
-            <li>Defined XP curves and reward cadence</li>
-            <li>Worked with QA to validate edge cases</li>
-          </ul>
-          <a class="btn" href="#">View Case Study</a>
-        </div>
-      </div>
+  <div class="projects">
 
-      <div class="card">
-        <img src="https://via.placeholder.com/400x225" alt="Project screenshot">
-        <div class="card-content">
-          <h3>Feature Design: New Gameplay Mode</h3>
-          <p>
-            Designed a new gameplay mode that expanded core mechanics while fitting into existing live systems.
-          </p>
-          <ul>
-            <li>Defined rules, win conditions, and UI flow</li>
-            <li>Produced wireframes and design docs</li>
-            <li>Playtested and iterated based on feedback</li>
-          </ul>
-          <a class="btn" href="#">View Case Study</a>
-        </div>
+    <!-- Example project -->
+    <div class="card fade-in">
+      <iframe
+        height="300"
+        src="https://www.youtube.com/embed/VIDEO_ID"
+        title="Legendary: Game of Heroes"
+        allowfullscreen>
+      </iframe>
+
+      <div class="card-content">
+        <h3>Legendary: Game of Heroes</h3>
+        <p><strong>Role:</strong> Game Designer</p>
+        <p>
+          Designed Hero Skills, Mythic Legends, Mythic Legend Relics, and long-term Cudgel chase items to improve engagement and endgame motivation.
+        </p>
+        <a class="btn" href="#">View Case Study</a>
       </div>
     </div>
-  </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: samesuda@yahoo.com</p>
-    <p>LinkedIn: linkedin.com/in/shane-mesuda-95007929</p>
-    <p>Available for Game Designer or Systems Designer roles</p>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    © 2026 Shane Mesuda — Game Design Portfolio
-  </footer>
+<section id="contact" class="fade-in">
+  <h2>Contact</h2>
+  <p>Email: samesuda@yahoo.com</p>
+  <p>LinkedIn: linkedin.com/in/shane-mesuda-95007929</p>
+  <p>Available for Game Designer or Systems Designer roles</p>
+</section>
+
+<footer>
+  © 2026 Shane Mesuda — Game Design Portfolio
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
