@@ -3,72 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shane Mesuda – Game Design Portfolio</title>
+  <title>Game Design Portfolio</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f172a;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #1e293b, #020617);
       color: #e5e7eb;
     }
     header {
-      background: linear-gradient(135deg, #4f46e5, #22d3ee);
-      padding: 3rem 1.5rem;
+      background: linear-gradient(135deg, #6366f1, #22d3ee);
+      padding: 4rem 1.5rem;
       text-align: center;
     }
     header h1 {
       margin: 0;
-      font-size: 3rem;
+      font-size: 3.2rem;
+      letter-spacing: -1px;
     }
     header p {
-      max-width: 700px;
+      max-width: 720px;
       margin: 1rem auto 0;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      opacity: 0.95;
     }
     nav {
-      background: #020617;
+      background: rgba(2,6,23,0.85);
       padding: 0.75rem;
       text-align: center;
       position: sticky;
       top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 10;
     }
     nav a {
-      color: #22d3ee;
+      color: #67e8f9;
       margin: 0 1rem;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    nav a:hover {
+      color: #ffffff;
     }
     section {
-      padding: 3rem 1.5rem;
-      max-width: 1100px;
+      padding: 4rem 1.5rem;
+      max-width: 1200px;
       margin: auto;
     }
     h2 {
-      border-bottom: 2px solid #22d3ee;
-      display: inline-block;
-      padding-bottom: 0.25rem;
+      border-left: 5px solid #22d3ee;
+      padding-left: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
     }
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
       margin-top: 2rem;
     }
     .card {
-      background: #020617;
-      border-radius: 12px;
+      background: linear-gradient(180deg, #020617, #020617cc);
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-    .card img {
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+    }
+    .card img, .card video {
       width: 100%;
       display: block;
     }
     .card-content {
-      padding: 1rem;
+      padding: 1.25rem 1.25rem 1.5rem;
     }
     .card-content h3 {
       margin-top: 0;
+      margin-bottom: 0.25rem;
+      font-size: 1.25rem;
     }
     footer {
       background: #020617;
@@ -80,95 +96,129 @@
     }
     .btn {
       display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: #22d3ee;
+      margin-top: 0.75rem;
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(135deg, #22d3ee, #6366f1);
       color: #020617;
-      border-radius: 6px;
+      border-radius: 999px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
+      transition: transform 0.15s ease;
+    }
+    .btn:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Shane Mesuda</h1>
+    <p>Game Designer with a strong QA background, focused on systems, progression, and player experience in live mobile games.</p>
+  </header>
 
-<header>
-  <h1>Shane Mesuda</h1>
-  <p>Game Designer with a strong QA background, focused on systems, progression, and player experience in live mobile games.</p>
-</header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a Game Designer with over a decade of experience in mobile and live service games, blending design thinking with a deep QA background. I specialize in systems design, feature design, and progression tuning, with a strong focus on clarity, player motivation, and long-term engagement.
+    </p>
+    <p>
+      My strength is turning complex mechanics into intuitive player experiences and collaborating closely with engineering, art, and product teams to ship features that perform well in live environments.
+    </p>
+  </section>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    I’m a Game Designer with over a decade of experience in mobile and live service games, blending design thinking with a deep QA background. I specialize in systems design, feature design, and progression tuning, with a strong focus on clarity, player motivation, and long-term engagement.
-  </p>
-  <p>
-    My strength is turning complex mechanics into intuitive player experiences and collaborating closely with engineering, art, and product teams to ship features that perform well in live environments.
-  </p>
-</section>
-
-<section id="projects">
-  <h2>Selected Projects</h2>
-  <div class="projects">
-
-    <div class="card">
+  <section id="projects">
+    <h2>Selected Projects</h2>
+    <div class="projects">
+      <div class="card">
       <img src="https://via.placeholder.com/400x225" alt="Legendary: Game of Heroes screenshot">
-      <div class="card-content">
-        <h3>Legendary: Game of Heroes</h3>
-        <p><strong>Role:</strong> Game Designer</p>
-        <p>
-          Led the design of multiple core systems and features including Hero Skills, Mythic Legends, Mythic Legend Relics, and a new series of Cudgels as long-term chase items.
-        </p>
-        <p><strong>Problem:</strong> Declining player sentiment and shrinking active player population.</p>
-        <ul>
-          <li>Designed Hero Skills to deepen combat strategy and build diversity</li>
-          <li>Created Mythic Legends and Relics to provide long-term progression goals</li>
-          <li>Designed a new series of Cudgels as a long-term chase item for veteran players</li>
-          <li>Authored design specs and collaborated with engineering and live ops</li>
-        </ul>
-        <p><strong>Results:</strong> The new Cudgels series improved player retention and satisfaction. Mythic Legend Relics introduced a new chase item for veteran players and revitalized endgame engagement.</p>
-        <a class="btn" href="#">View Case Study</a>
+      <iframe width="100%" height="225" src="https://www.youtube.com/embed/VIDEO_ID" title="Legendary: Game of Heroes Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="card-content">
+          <h3>Legendary: Game of Heroes</h3>
+          <p><strong>Role:</strong> Game Designer</p>
+          <p>
+            Led the design of multiple core systems and features including Hero Skills, Mythic Legends, Mythic Legend Relics, and a new series of Cudgels as long-term chase items.
+          </p>
+          <p><strong>Problem:</strong> Declining player sentiment and shrinking active player population.</p>
+          <ul>
+            <li>Designed Hero Skills to deepen combat strategy and build diversity</li>
+            <li>Created Mythic Legends and Relics to provide long-term progression goals</li>
+            <li>Designed a new series of Cudgels as a long-term chase item for veteran players</li>
+            <li>Authored design specs and collaborated with engineering and live ops</li>
+          </ul>
+          <p><strong>Results:</strong> The new Cudgels series improved player retention and satisfaction. Mythic Legend Relics introduced a new chase item for veteran players and revitalized endgame engagement.</p>
+          <a class="btn" href="#">View Case Study</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x225" alt="Legendary: Heroes Unchained screenshot">
+        <div class="card-content">
+          <h3>Legendary: Heroes Unchained</h3>
+          <p><strong>Role:</strong> Game Designer</p>
+          <p>
+            Designed the foundational rewards economy for a new game, establishing how players earned and spent resources across progression and events.
+          </p>
+          <p><strong>Problem:</strong> The game launched without a defined rewards economy, requiring a full system to support progression, engagement, and monetization.
+          </p>
+          <ul>
+            <li>Defined reward types, sources, and sinks</li>
+            <li>Built early tuning models and progression curves</li>
+            <li>Worked cross-functionally with product and engineering to implement systems</li>
+          </ul>
+          <p><strong>Results & Learnings:</strong> While overall game performance was limited, this work established a complete economy framework and provided key learnings around reward pacing, inflation control, and player motivation in early-stage systems.</p>
+          <a class="btn" href="#">View Case Study</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x225" alt="Project screenshot">
+        <div class="card-content">
+          <h3>Progression & Economy Rework</h3>
+          <p>
+            Redesigned progression pacing and in-game economy to improve early-game onboarding and long-term engagement.
+          </p>
+          <ul>
+            <li>Created tuning models in spreadsheets</li>
+            <li>Defined XP curves and reward cadence</li>
+            <li>Worked with QA to validate edge cases</li>
+          </ul>
+          <a class="btn" href="#">View Case Study</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x225" alt="Project screenshot">
+        <div class="card-content">
+          <h3>Feature Design: New Gameplay Mode</h3>
+          <p>
+            Designed a new gameplay mode that expanded core mechanics while fitting into existing live systems.
+          </p>
+          <ul>
+            <li>Defined rules, win conditions, and UI flow</li>
+            <li>Produced wireframes and design docs</li>
+            <li>Playtested and iterated based on feedback</li>
+          </ul>
+          <a class="btn" href="#">View Case Study</a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/400x225" alt="Legendary: Heroes Unchained screenshot">
-      <div class="card-content">
-        <h3>Legendary: Heroes Unchained</h3>
-        <p><strong>Role:</strong> Game Designer</p>
-        <p>
-          Designed the foundational rewards economy for a new game, establishing how players earned and spent resources across progression and events.
-        </p>
-        <p><strong>Problem:</strong> The game launched without a defined rewards economy, requiring a full system to support progression, engagement, and monetization.</p>
-        <ul>
-          <li>Defined reward types, sources, and sinks</li>
-          <li>Built early tuning models and progression curves</li>
-          <li>Worked cross-functionally with product and engineering to implement systems</li>
-        </ul>
-        <p><strong>Results & Learnings:</strong> While overall game performance was limited, this work established a complete economy framework and provided key learnings around reward pacing, inflation control, and player motivation in early-stage systems.</p>
-        <a class="btn" href="#">View Case Study</a>
-      </div>
-    </div>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: samesuda@yahoo.com</p>
+    <p>LinkedIn: linkedin.com/in/shane-mesuda-95007929</p>
+    <p>Available for Game Designer or Systems Designer roles</p>
+  </section>
 
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: samesuda@yahoo.com</p>
-  <p>LinkedIn: linkedin.com/in/shane-mesuda-95007929</p>
-  <p>Available for Game Designer or Systems Designer roles</p>
-</section>
-
-<footer>
-  © 2026 Shane Mesuda — Game Design Portfolio
-</footer>
-
+  <footer>
+    © 2026 Shane Mesuda — Game Design Portfolio
+  </footer>
 </body>
 </html>
