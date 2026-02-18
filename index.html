@@ -151,8 +151,38 @@
       border-top: 1px solid var(--border);
     }
 
-    /* Remove previous animation styling if present */
-    .fade-in { opacity: 1 !important; transform: none !important; }
+    /* Subtle motion + highlighting (mostly black/white) */
+    .card {
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(17, 24, 39, 0.10);
+      border-color: #d1d5db;
+    }
+
+    /* Fade-in on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 650ms ease, transform 650ms ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Small highlight accents */
+    h2 {
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      margin-top: 0.5rem;
+      height: 1px;
+      background: var(--border);
+    }
   </style>
 </head>
 <body>
@@ -184,6 +214,9 @@
 
     <!-- Project: Legendary: Game of Heroes -->
     <div class="card fade-in">
+      <div class="card-content">
+      </div>
+
       <div class="media">
       <div class="video-wrapper">
         <iframe
@@ -213,8 +246,11 @@
 
     <!-- Project: Legendary: Heroes Unchained -->
     <div class="card fade-in">
+      <div class="card-content">
+      </div>
+
       <div class="media">
-        <img src="images/heroes-unchained.jpg" alt="Legendary: Heroes Unchained screenshot">
+        <img src="Images/heroes-unchained.jpg" alt="Legendary: Heroes Unchained screenshot">
       </div>
 
       <div class="card-content">
@@ -238,7 +274,7 @@
 
   <section id="contact" class="fade-in">
     <h2>Contact</h2>
-    <p>Email: samesuda@yahoo.com</p>
+    <p>Email: smesuda@yahoo.com</p>
     <p>LinkedIn: linkedin.com/in/shane-mesuda-95007929</p>
     <p>Available for Game Designer or Systems Designer roles</p>
   </section>
@@ -247,5 +283,21 @@
     © 2026 Shane Mesuda — Game Design Portfolio
   </footer>
 
+<script>
+  // Fade-in on scroll (simple + lightweight)
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+</script>
 </body>
 </html>
