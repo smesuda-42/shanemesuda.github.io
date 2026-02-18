@@ -6,19 +6,19 @@
   <title>Game Design Portfolio</title>
   <style>
     :root {
-      --text: #111827;
-      --muted: #4b5563;
-      --border: #e5e7eb;
+      --text: #f9fafb;
+      --muted: rgba(249, 250, 251, 0.72);
+      --border: rgba(249, 250, 251, 0.18);
 
-      /* Background + surface contrast */
-      --bg: #f6f7fb;
-      --card: #ffffff;
-      --card-shadow: rgba(17, 24, 39, 0.08);
-      --card-shadow-hover: rgba(17, 24, 39, 0.14);
+      /* Background + surfaces */
+      --bg: #000000;
+      --card: #050505;
+      --card-shadow: rgba(0, 0, 0, 0.55);
+      --card-shadow-hover: rgba(0, 0, 0, 0.75);
 
-      /* Accent (subtle, game-ish) */
-      --accent: #7c3aed;
-      --accent-soft: rgba(124, 58, 237, 0.10);
+      /* Accent (subtle, minimal) */
+      --accent: #ffffff;
+      --accent-soft: rgba(255, 255, 255, 0.06);
     }
 
     * { box-sizing: border-box; }
@@ -26,11 +26,7 @@
     body {
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background:
-        radial-gradient(circle at 20% 10%, rgba(124, 58, 237, 0.08), transparent 35%),
-        radial-gradient(circle at 80% 0%, rgba(16, 185, 129, 0.06), transparent 40%),
-        radial-gradient(circle at 60% 90%, rgba(59, 130, 246, 0.06), transparent 45%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.55;
     }
@@ -68,10 +64,12 @@
       text-decoration: none;
       border-bottom: 1px solid transparent;
       padding-bottom: 2px;
+      opacity: 0.9;
     }
 
     nav a:hover {
-      border-bottom-color: var(--text);
+      border-bottom-color: rgba(255,255,255,0.65);
+      opacity: 1;
     }
 
     section {
@@ -79,10 +77,7 @@
       max-width: 900px;
       margin: 0 auto;
       border-top: 1px solid var(--border);
-
-      /* Make content feel like it sits on a surface */
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(6px);
+      background: transparent;
     }
 
     h2 {
@@ -100,25 +95,24 @@
 
     .card {
       background: var(--card);
-      border: 1px solid rgba(17, 24, 39, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 18px 45px var(--card-shadow);
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
     }
 
     .media {
       padding: 0.9rem 1rem 1rem;
-      border-bottom: 1px solid rgba(17, 24, 39, 0.08);
-      background:
-        radial-gradient(circle at 30% 20%, var(--accent-soft), transparent 55%),
-        rgba(255, 255, 255, 0.65);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.02);
     }
 
     .media img {
       width: 100%;
       display: block;
       border-radius: 10px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255, 255, 255, 0.22);
     }
 
     .video-wrapper {
@@ -131,7 +125,7 @@
       max-width: 420px;
       aspect-ratio: 9 / 16;
       border-radius: 10px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255, 255, 255, 0.22);
     }
 
     .card-content {
@@ -178,7 +172,7 @@
     .card:hover {
       transform: translateY(-3px);
       box-shadow: 0 26px 70px var(--card-shadow-hover);
-      border-color: rgba(124, 58, 237, 0.25);
+      border-color: rgba(255, 255, 255, 0.55);
     }
 
     /* Fade-in on scroll */
@@ -201,7 +195,7 @@
       display: block;
       margin-top: 0.5rem;
       height: 1px;
-      background: linear-gradient(90deg, rgba(124,58,237,0.35), rgba(17,24,39,0.08));
+      background: rgba(255, 255, 255, 0.18);
     }
   </style>
 </head>
