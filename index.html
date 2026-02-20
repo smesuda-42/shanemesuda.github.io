@@ -12,7 +12,7 @@
 
       /* Background + surfaces */
       --bg: #000000;
-      --card: #050505;
+      --card: #111111;
       --card-shadow: rgba(0, 0, 0, 0.55);
       --card-shadow-hover: rgba(0, 0, 0, 0.75);
 
@@ -29,12 +29,27 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.55;
+      /* subtle depth without adding color */
+      background-image:
+        radial-gradient(1200px 600px at 20% -10%, rgba(255,255,255,0.06), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(255,255,255,0.04), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 30%);
+      background-attachment: fixed;
     }
 
     header {
       padding: 3rem 1.25rem 1.5rem;
       max-width: 900px;
       margin: 0 auto;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      display: block;
+      margin-top: 1.25rem;
+      height: 1px;
+      background: rgba(255,255,255,0.14);
     }
 
     header h1 {
@@ -80,6 +95,52 @@
       background: transparent;
     }
 
+    /* Center column separator */
+    /* Center column separator */
+    .page-wrapper {
+      position: relative;
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 2rem 0 3rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255,255,255,0.06) inset;
+      overflow: hidden;
+    }
+
+    /* subtle grid/noise layer */
+    .page-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.28;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at 50% 15%, black 0%, transparent 65%);
+    }
+
+    .page-wrapper::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      pointer-events: none;
+      border-radius: 20px;
+      /* faint edge glow */
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+      opacity: 0.9;
+    }
+
+    /* Subtle content column contrast */
+    section#projects {
+      padding-top: 2.5rem;
+    }
+
     h2 {
       margin: 0 0 1rem;
       font-size: 1.25rem;
@@ -94,18 +155,35 @@
     }
 
     .card {
-      background: var(--card);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      position: relative;
+      background: linear-gradient(180deg, #111111 0%, #0a0a0a 100%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 18px 45px var(--card-shadow);
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.70),
+        0 0 0 1px rgba(255,255,255,0.05) inset;
       transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    /* subtle top highlight line */
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.16);
+      opacity: 0.9;
+      pointer-events: none;
     }
 
     .media {
       padding: 0.9rem 1rem 1rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.18);
       background: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
     }
 
     .media img {
@@ -113,6 +191,7 @@
       display: block;
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
     }
 
     .video-wrapper {
@@ -126,6 +205,7 @@
       aspect-ratio: 9 / 16;
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
     }
 
     .card-content {
@@ -200,6 +280,7 @@
   </style>
 </head>
 <body>
+  <div class="page-wrapper">
   <header>
     <h1>Shane Mesuda</h1>
     <p>Game Designer with a strong QA background, focused on systems, progression, and player experience in live mobile games.</p>
@@ -296,6 +377,8 @@
   <footer>
     © 2026 Shane Mesuda — Game Design Portfolio
   </footer>
+
+  </div>
 
 <script>
   // Fade-in on scroll (simple + lightweight)
